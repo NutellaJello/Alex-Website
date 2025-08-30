@@ -1,11 +1,275 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title> My Website Nutella Jello</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio website for Your Name: About, Research, FTC, Community Service, and Business Proposal." />
+  <style>
+    :root{
+      --bg: #0f1221;          /* deep navy */
+      --panel: #14172a;
+      --text: #e8ecff;
+      --muted: #a7b1d6;
+      --brand: #7aa2ff;       /* soft blue */
+      --accent: #b388ff;      /* purple */
+      --ring: rgba(122,162,255,.45);
+      --radius: 16px;
+      --shadow: 0 6px 24px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text); background: radial-gradient(1200px 600px at 100% -10%, rgba(122,162,255,.25), transparent),
+                         radial-gradient(1000px 500px at -10% 10%, rgba(179,136,255,.20), transparent),
+                         var(--bg);
+    }
+
+    /* Skip link */
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:#000;color:#fff;padding:.5rem .75rem;border-radius:.5rem;outline:2px solid var(--brand)}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(150%) blur(8px);
+      background: rgba(15,18,33,.70); border-bottom:1px solid rgba(122,162,255,.18);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:0 1rem}
+    .nav{display:flex;align-items:center;justify-content:space-between; padding:.85rem 0}
+    .brand{display:flex;gap:.6rem;align-items:center;font-weight:700;letter-spacing:.3px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(45deg,var(--brand),var(--accent)); box-shadow:0 0 18px var(--ring)}
+    nav ul{list-style:none;display:flex;gap:.8rem;margin:0;padding:0;flex-wrap:wrap}
+    nav a{display:inline-block;padding:.5rem .8rem;border-radius:.7rem;color:var(--text);text-decoration:none}
+    nav a:hover, nav a:focus{background:rgba(122,162,255,.15); outline:none}
+    nav a.active{background:rgba(122,162,255,.25); box-shadow:0 0 0 2px var(--ring) inset}
+
+    /* Hero */
+    .hero{padding:56px 0 32px}
+    .hero h1{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:.2rem 0}
+    .hero p{color:var(--muted); max-width:60ch}
+    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+    .tag{padding:.25rem .6rem;border-radius:999px;background:rgba(122,162,255,.14); border:1px solid rgba(122,162,255,.22); color:#dfe7ff}
+
+    /* Section cards */
+    section{scroll-margin-top:84px;}
+    .grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media (min-width: 760px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)); border:1px solid rgba(122,162,255,.15);
+          border-radius:var(--radius); box-shadow:var(--shadow); padding:1.1rem}
+    .card h3{margin:.2rem 0 .4rem;font-size:1.15rem}
+    .card p{color:var(--muted)}
+
+    /* Lists inside sections */
+    .list{display:grid; gap:.6rem; padding:0; margin:.6rem 0 0}
+    .list li{list-style:none; background:var(--panel); border:1px solid rgba(122,162,255,.12); padding:.8rem .9rem; border-radius:12px}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(122,162,255,.18); color:var(--muted); text-align:center; padding:32px 0; margin-top:40px}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:12px;border:1px solid rgba(122,162,255,.25);text-decoration:none;color:var(--text)}
+    .btn:hover{background:rgba(122,162,255,.15)}
+
+    /* Back to top */
+    #topBtn{position:fixed;right:16px;bottom:16px;display:none;padding:.65rem .8rem}
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
-    <h1>Hello testing </h1>
+    <div class="container nav">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Your Name</span></div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about" class="link">About Me</a></li>
+          <li><a href="#research" class="link">Research</a></li>
+          <li><a href="#ftc" class="link">FTC</a></li>
+          <li><a href="#community" class="link">Community Service</a></li>
+          <li><a href="#business" class="link">Business Proposal</a></li>
+          <li><a href="#contact" class="link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
+
+  <main id="main" class="container">
+    <section class="hero" id="home">
+      <h1>Hi, I’m Your Name.</h1>
+      <p>Brief one-liner about who you are and what you do (e.g., UChicago Math & Econ student • Researcher • FTC alum • Community organizer • Entrepreneur).
+      Update this paragraph to reflect your voice.</p>
+      <div class="tags">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">FTC Robotics</span>
+        <span class="tag">Public Service</span>
+        <span class="tag">Entrepreneurship</span>
+      </div>
+      <p style="margin-top:1rem">
+        <a class="btn" href="#about">Learn more ↓</a>
+      </p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Bio</h3>
+          <p>Write a short bio (3–5 sentences). Mention school, focus areas, and a few highlights.
+             Keep it accessible and human. Link to your resume if you have one.</p>
+          <p><a class="btn" href="#contact">Get in touch</a></p>
+        </article>
+        <article class="card">
+          <h3>Highlights</h3>
+          <ul class="list">
+            <li><strong>2025:</strong> Internship / project …</li>
+            <li><strong>2024:</strong> Competition / award …</li>
+            <li><strong>Ongoing:</strong> Teaching & outreach …</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2>Research</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Project A — Title</h3>
+          <p>1–3 sentence summary of your research question, dataset, and method. Add links to paper, poster, or code.</p>
+          <p>
+            <a class="btn" href="#">Paper</a>
+            <a class="btn" href="#">Code</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Project B — Title</h3>
+          <p>What did you build or discover? Why it matters. Any key results.
+          </p>
+          <p>
+            <a class="btn" href="#">Poster</a>
+            <a class="btn" href="#">Slides</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FTC -->
+    <section id="ftc">
+      <h2>FIRST Tech Challenge (FTC)</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Team & Role</h3>
+          <p>Team number, role (Captain, Programmer, etc.), seasons, and key responsibilities (autonomous, RoadRunner, vision, Mecanum, etc.).</p>
+        </article>
+        <article class="card">
+          <h3>Achievements</h3>
+          <ul class="list">
+            <li>Winning alliance captain at <em>Event</em>; top-seeded team.</li>
+            <li>Innovate / Inspire / Control Award (as applicable).</li>
+            <li>Technical highlights: trajectory planning, camera pipelines, etc.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMMUNITY SERVICE -->
+    <section id="community">
+      <h2>Community Service</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Initiatives</h3>
+          <ul class="list">
+            <li>Weekly meal-bag program — scope & impact.</li>
+            <li>Workshops on finance/STEM for youth — dates & materials.</li>
+            <li>Partnerships with local shelters / orgs.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Impact</h3>
+          <p>Short metrics: total hours, bags delivered, funds raised, partners served. Add testimonials if available.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- BUSINESS PROPOSAL -->
+    <section id="business">
+      <h2>Business Proposal</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Problem</h3>
+          <p>State the pain point you’re tackling. Who is affected and how big is the need?</p>
+        </article>
+        <article class="card">
+          <h3>Solution</h3>
+          <p>Your product/service in one paragraph. Include the tech, why it’s different, and the core benefit.</p>
+        </article>
+        <article class="card">
+          <h3>Go-To-Market</h3>
+          <ul class="list">
+            <li>Customer segment(s)</li>
+            <li>Acquisition channel(s)</li>
+            <li>Pricing model</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Traction & Next Steps</h3>
+          <ul class="list">
+            <li>Pilots / LOIs / early users</li>
+            <li>Roadmap (Q3–Q4)</li>
+            <li>Contact for partnerships</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Reach me</h3>
+          <p>Email: <a href="mailto:you@example.com">you@example.com</a> • GitHub: <a href="#">@yourhandle</a> • LinkedIn: <a href="#">/in/yourname</a></p>
+        </article>
+        <article class="card">
+          <h3>Resume</h3>
+          <p><a class="btn" href="#">Download PDF</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Your Name. Built with HTML/CSS + GitHub Pages.</div>
+  </footer>
+
+  <button id="topBtn" class="btn" aria-label="Back to top">↑ Top</button>
+
+  <script>
+    // Active link highlight on scroll
+    const links = document.querySelectorAll('.link');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const i = sections.indexOf(entry.target);
+        if(i > -1){
+          links[i].classList.toggle('active', entry.isIntersecting);
+        }
+      });
+    },{rootMargin:"-60% 0px -35% 0px", threshold: [0, 1]});
+    sections.forEach(s => s && obs.observe(s));
+
+    // Back to top button
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', ()=>{
+      topBtn.style.display = window.scrollY > 500 ? 'inline-flex' : 'none';
+    });
+    topBtn.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
