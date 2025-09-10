@@ -1,302 +1,283 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alex Gan — Portfolio</title>
-  <meta name="description" content="Portfolio website for Alex Gan Name: About, Research, FTC, Community Service, and Business Proposal." />
+  <meta name="description" content="Portfolio of Alex Gan — research, engineering, service, and entrepreneurship." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #0f1221;          /* deep navy */
-      --panel: #14172a;
-      --text:  #e8ecff; /*white*/
-      --muted: #a7b1d6;
-      --brand: #7aa2ff;       /* soft blue */
-      --accent: #b388ff;      /* purple */
-      --ring: rgba(122,162,255,.45);
+      --bg: #ffffff;
+      --text:#111111;
+      --muted:#5f6b7a;
+      --accent:#1d4ed8; /* blue */
+      --accent-2:#7c3aed; /* purple */
+      --card:#f4f7fb;
+      --border:#e6eaf0;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
       --radius: 16px;
-      --shadow: 0 6px 24px rgba(0,0,0,.35);
+      --max: 1080px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-   /* body{
-      margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text); background: radial-gradient(1200px 600px at 100% -10%, rgba(122,162,255,.25), transparent),
-                         radial-gradient(1000px 500px at -10% 10%, rgba(179,136,255,.20), transparent),
-                         var(--bg);
-    }*/
-  body {
-  margin: 0;
-  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: #000;       /* black text */
-  background: #fff;  /* plain white background */
-}
-
-
-    
-
-    /* Skip link */
-    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:#000;color:#fff;padding:.5rem .75rem;border-radius:.5rem;outline:2px solid var(--brand)}
-
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(150%) blur(8px);
-      background: rgba(15,18,33,.70); border-bottom:1px solid rgba(122,162,255,.18);
+    html,body{height:100%}
+    body{
+      margin:0;
+      font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    .container{max-width:1100px;margin:0 auto;padding:0 1rem}
-    .nav{display:flex;align-items:center;justify-content:space-between; padding:.85rem 0}
-    .brand{display:flex;gap:.6rem;align-items:center;font-weight:700;letter-spacing:.3px}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(45deg,var(--brand),var(--accent)); box-shadow:0 0 18px var(--ring)}
-    nav ul{list-style:none;display:flex;gap:.8rem;margin:0;padding:0;flex-wrap:wrap}
-    nav a{display:inline-block;padding:.5rem .8rem;border-radius:.7rem;color:var(--text);text-decoration:none}
-    nav a:hover, nav a:focus{background:rgba(122,162,255,.15); outline:none}
-    nav a.active{background:rgba(122,162,255,.25); box-shadow:0 0 0 2px var(--ring) inset}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:50; background:#fffcc0; background:#fff; border-bottom:1px solid var(--border); backdrop-filter: saturate(180%) blur(6px)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px}
+    .brand{font-weight:700; letter-spacing:.2px}
+    .nav a{color:var(--text); opacity:.85}
+    .nav a:hover{opacity:1}
+    .nav-links{display:flex; gap:16px; align-items:center}
+    .btn{display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:#fff}
+    .btn:hover{box-shadow:var(--shadow)}
+    .btn.accent{background:var(--accent); color:#fff; border-color:var(--accent)}
 
     /* Hero */
-    .hero{padding:56px 0 32px}
-    .hero h1{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:.2rem 0}
-    .hero p{color:var(--muted); max-width:60ch}
-    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
-    .tag{padding:.25rem .6rem;border-radius:999px;background:rgba(122,162,255,.14); border:1px solid rgba(122,162,255,.22); color:#dfe7ff}
+    .hero{padding:72px 0 32px}
+    .hero h1{font-size:40px; line-height:1.2; margin:0 0 8px}
+    .hero .tag{display:inline-flex; flex-wrap:wrap; gap:8px; margin:12px 0}
+    .chip{font: 13px/1.2 Inter, sans-serif; color:#0b1020; background:#eef2ff; border:1px solid #e6eaff; padding:8px 10px; border-radius:999px}
+    .sub{color:var(--muted)}
+    .grid{display:grid; gap:24px}
+    .grid.two{grid-template-columns: repeat(2, minmax(0,1fr))}
+    .grid.three{grid-template-columns: repeat(3, minmax(0,1fr))}
+    @media (max-width: 900px){ .grid.two, .grid.three{grid-template-columns:1fr} .hero{padding:56px 0 8px} }
 
-    /* Section cards */
-    section{scroll-margin-top:84px;}
-    .grid{display:grid;grid-template-columns:1fr;gap:1rem}
-    @media (min-width: 760px){.grid{grid-template-columns:repeat(2,1fr)}}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)); border:1px solid rgba(122,162,255,.15);
-          border-radius:var(--radius); box-shadow:var(--shadow); padding:1.1rem}
-    .card h3{margin:.2rem 0 .4rem;font-size:1.15rem}
-    .card p{color:var(--muted)}
+    /* Section */
+    section{padding:40px 0}
+    section h2{font-size:26px; margin:0 0 12px}
+    section .lead{color:var(--muted); margin-top:-6px}
 
-    /* Lists inside sections */
-    .list{display:grid; gap:.6rem; padding:0; margin:.6rem 0 0}
-    .list li{list-style:none; background:var(--panel); border:1px solid rgba(122,162,255,.12); padding:.8rem .9rem; border-radius:12px}
+    /* Cards */
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow)}
+    .card h3{margin:0 0 6px; font-size:18px}
+    .card p{margin:6px 0 0}
+    .eyebrow{font:12px/1.2 Inter, sans-serif; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
+
+    /* Timeline */
+    .timeline{position:relative; margin-left:8px}
+    .timeline::before{content:""; position:absolute; top:6px; bottom:6px; left:10px; width:2px; background:var(--border)}
+    .titem{position:relative; padding-left:28px; margin:14px 0}
+    .titem::before{content:""; position:absolute; left:4px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--accent)}
 
     /* Footer */
-    footer{border-top:1px solid rgba(122,162,255,.18); color:var(--muted); text-align:center; padding:32px 0; margin-top:40px}
+    footer{padding:48px 0; color:var(--muted); border-top:1px solid var(--border)}
 
-    /* Buttons */
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:12px;border:1px solid rgba(122,162,255,.25);text-decoration:none;color:var(--text)}
-    .btn:hover{background:rgba(122,162,255,.15)}
-
-    /* Back to top */
-    #topBtn{position:fixed;right:16px;bottom:16px;display:none;padding:.65rem .8rem}
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .mono{font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    .right{display:flex; gap:10px; align-items:center}
+    .spacer{height:12px}
+    .pill{display:inline-block; padding:4px 8px; border-radius:999px; background:#eef2ff; border:1px solid #e6eaff; color:#1e2b6b; font-size:12px}
+    .kbd{border:1px solid var(--border); padding:2px 6px; border-radius:6px; background:#fff; font-size:12px}
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="kbd" href="#main" style="position:absolute; left:-999px; top:-999px">Skip to content</a>
+
   <header>
-    <div class="container nav">
-      <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Alex Gan</span></div>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#about" class="link">About Me</a></li>
-          <li><a href="#research" class="link">Research</a></li>
-          <li><a href="#ftc" class="link">FTC</a></li>
-          <li><a href="#community" class="link">Community Service</a></li>
-          <li><a href="#business" class="link">Business Proposal</a></li>
-          <li><a href="#contact" class="link">Contact</a></li>
-        </ul>
+    <div class="wrap nav">
+      <div class="brand">Alex Gan</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="https://nutellajello.github.io/Alex-Website/">Old Site</a>
+        <a class="btn accent" href="#resume">Resume</a>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="container">
-    <section class="hero" id="home">
-      <h1>Hi, I’m Alex Gan</h1>
-      <p> 
-        I am currently a senior at McLean High School. I am interested in Programming, Engineering, Service, and Economics. In my free time I enjoy cooking, swimming, and cardistry. 
-      </p>
-      <div class="tags">
-        <span class="tag">Machine Learning</span>
-        <span class="tag">FTC Robotics</span>
-        <span class="tag">Public Service</span>
-        <span class="tag">Entrepreneurship</span>
+  <main id="main" class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="grid two" style="align-items:center">
+        <div>
+          <h1>Student researcher & builder focused on <span class="mono">ML</span>, robotics, and service.</h1>
+          <p class="sub">Senior at McLean High School. Interested in programming, engineering, economics, and community impact. In free time: cooking, swimming, cardistry.</p>
+          <div class="tag">
+            <span class="chip">Machine Learning</span>
+            <span class="chip">FTC Robotics</span>
+            <span class="chip">Public Service</span>
+            <span class="chip">Entrepreneurship</span>
+          </div>
+          <div class="right">
+            <a class="btn accent" href="#projects">See Projects</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="eyebrow">Highlights</div>
+            <ul>
+              <li><strong>ASSIP Research (2024–25)</strong> — Blockchain governance & ERC‑4337 analysis with SQL/Python; one paper published; second abstract pending.</li>
+              <li><strong>Air‑quality ML</strong> — County‑level NO<sub>2</sub> prediction (GEE + XGBoost) with spatio‑temporal features; invited JSHS presenter.</li>
+              <li><strong>FTC Captain</strong> — Autonomous, RoadRunner, and vision pipelines; awards at regional events.</li>
+              <li><strong>Community</strong> — Weekly meal‑bag program; STEM/finance workshops for youth.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <p style="margin-top:1rem">
-        <a class="btn" href="#about">Learn more ↓</a>
-      </p>
     </section>
 
-    <!-- ABOUT -->
+    <!-- About -->
     <section id="about">
-      <h2>About Me</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Bio</h3>
-          <p>I am currently a senior at McLean High School. I am interested in Programming, Engineering, Service, and Economics. In my free time I enjoy cooking, swimming, and cardistry.</p>
-          <p><a class="btn" href="#contact">Get in touch</a></p>
-        </article>
-        <article class="card">
-          <h3>Highlights</h3>
-          <ul class="list">
-            <li><strong>2025:</strong> Internship / project …</li>
-            <li><strong>2024:</strong> Competition / award …</li>
-            <li><strong>Ongoing:</strong> Teaching & outreach …</li>
-          </ul>
-        </article>
+      <h2>About</h2>
+      <p class="lead">I like building practical systems—models that explain data, robots that move with intent, and programs that help people.</p>
+      <div class="grid two">
+        <div class="card">
+          <h3>Research Focus</h3>
+          <p>Recent work spans <strong>account abstraction & open‑source funding</strong> in blockchain ecosystems and <strong>air‑quality modeling</strong> using satellite and proxy signals. I care about explainability and deployability, not just benchmark scores.</p>
+        </div>
+        <div class="card">
+          <h3>Currently Learning</h3>
+          <p>Better time‑series cross‑validation, options greeks for event‑driven trading, and more robust CV for robotics perception.</p>
+        </div>
       </div>
     </section>
 
-    <!-- RESEARCH -->
-    <section id="research">
-      <h2>Research</h2>
-      <div class="grid">
+    <!-- Projects / Research -->
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <p class="lead">Selected research & builds. More details available on request.</p>
+      <div class="grid two">
         <article class="card">
-          <h3>2 Times * Aspiring Scientists Summer Internship Program (ASSIP) (2024, 2025)</h3>
-          <p>Researched under Dr. Li Jiasun (Finance, Costello College of Business, GMU), analyzing open-source blockchain projects using SQL and Python.</p>
-          <p>Analyzing the Impact of Different Funding and Governance Models on an OSS Project’s Success</p>
-          <p>Paper accepted and published in Journal of Student-Scientists’ Research (Vol. 6, Oct 2024); LINK to publication   - https://journals.gmu.edu/jssr/article/view/4246 </p>
+          <div class="eyebrow">Research · 2024 → 2025</div>
+          <h3>Blockchain Governance & ERC‑4337 (ASSIP, GMU)</h3>
+          <p>Two‑summer project under Dr. Li Jiasun: measured how <em>funding and governance models</em> relate to OSS project outcomes; extended to <span class="mono">ERC‑4337</span> account‑abstraction transaction analysis with Python/SQL.</p>
+          <p><strong>Outcome:</strong> One paper published in the <em>Journal of Student‑Scientists’ Research</em> (Vol. 6, Oct 2024). A follow‑up abstract is pending publication.</p>
           <p>
-            <a class="btn" href="#">Paper</a>
-            <a class="btn" href="#">Code</a>
+            <a href="https://journals.gmu.edu/jssr/article/view/4246">Publication</a>
+            · <a href="#">Code</a>
+            · <a href="#">Poster</a>
           </p>
         </article>
         <article class="card">
-          <h3></h3>
-          <p>extended research on account abstraction in blockchain transactions (2025), with abstract pending publication.
-          </p>
+          <div class="eyebrow">Research · 2024</div>
+          <h3>Spatio‑Temporal NO<sub>2</sub> Prediction (GEE + XGBoost)</h3>
+          <p>Built county‑level NO<sub>2</sub> predictions across the DMV using Google Earth Engine and gradient boosting. Addressed sparse data & cloud gaps with spatio‑temporal features; evaluated transferability across years and states.</p>
+          <p><strong>Notes:</strong> Presented at JSHS (oral). Received first‑place recognition from GMU GGS; Fairfax County science fair distinctions.</p>
           <p>
-            <a class="btn" href="#">Poster</a>
-            <a class="btn" href="#">Slides</a>
+            <a href="#">Poster</a>
+            · <a href="#">Slides</a>
           </p>
         </article>
-         <article class="card">
-          <h3>Correlation of Air Pollution with Population Density and Traffic Conditions Using Google Earth Engine and Predictive Models</h3>
-          <p>Applied Google Earth Engine and machine learning (XGBoost) to study relationships between NO₂ pollution, population density, and traffic patterns.
-              Developed spatio-temporal prediction methods to address sparse datasets and cloud-related data gaps, enabling scalable and reproducible urban air-quality monitoring.
-              ADD THESE :”VA Fairfax County Regional Science & Engineering Fair (2025)
-              Grand Prize Nominee and First Prize Winner.
-              Advanced to state ISEF competition.
-              Received First Place Award from GMU Department of Geography and Geoinformation Science.
-              Invited presenter at Virginia Regional Junior Science and Humanities Symposium (Oral Presentation).
-              ADD THESE  : The Curieux Academic
+        <article class="card">
+          <div class="eyebrow">Robotics · 2023 → 2025</div>
+          <h3>FTC #23928 — Autonomy & Vision</h3>
+          <p>Captained team; implemented RoadRunner trajectory planning and OpenCV/MediaPipe pipelines for autonomous navigation and scoring. Iterated on drivetrain reliability and sensor fusion.</p>
+          <p><strong>Highlights:</strong> Event wins and award placements; outreach demos.</p>
+          <p><a href="#">Robot Write‑up</a></p>
+        </article>
+        <article class="card">
+          <div class="eyebrow">Community · Ongoing</div>
+          <h3>Food Lounge VA — Weekly Meal‑Bag Program</h3>
+          <p>Organized donations and delivery logistics; sustained weekly distributions; coordinated volunteers and partners; >240 service hours accrued.</p>
+          <p><a href="#">Overview</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="titem">
+          <h3>ASSIP Research Intern — George Mason University</h3>
+          <div class="muted">Summer 2024 & 2025 · Fairfax, VA</div>
+          <p>Blockchain governance study; later, ERC‑4337 account‑abstraction analysis. Tools: Python, SQL, pandas, scikit‑learn.</p>
+        </div>
+        <div class="titem">
+          <h3>McLean Investment Club — Co‑founder</h3>
+          <div class="muted">2023 → Present</div>
+          <p>Hosted workshops on fundamentals, technicals, and risk. Organized Wharton High School Investment Competition participation.</p>
+        </div>
+        <div class="titem">
+          <h3>FTC Robotics — Captain & Lead Programmer</h3>
+          <div class="muted">2023 → 2025</div>
+          <p>Led software for autonomous, path‑planning, and vision; mentored new members on control loops and debugging.
           </p>
-          <p>
-            <a class="btn" href="#">Poster</a>
-            <a class="btn" href="#">Slides</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership / Service -->
+    <section id="leadership">
+      <h2>Leadership & Service</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>STEM & Finance Workshops</h3>
+          <p>Designed beginner‑friendly curricula for local youth; covered budgeting, saving, compounding, and intro coding.
           </p>
-        </article>
+        </div>
+        <div class="card">
+          <h3>Community Partnerships</h3>
+          <p>Coordinated with shelters and food‑aid organizations; tracked weekly metrics on bags delivered and funds raised.</p>
+        </div>
       </div>
     </section>
 
-    <!-- FTC -->
-    <section id="ftc">
-      <h2>FIRST Tech Challenge (FTC)</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Team & Role</h3>
-          <p>Team number, role (Captain, Programmer, etc.), seasons, and key responsibilities (autonomous, RoadRunner, vision, Mecanum, etc.).</p>
-        </article>
-        <article class="card">
-          <h3>Achievements</h3>
-          <ul class="list">
-            <li>Winning alliance captain at <em>Event</em>; top-seeded team.</li>
-            <li>Innovate / Inspire / Control Award (as applicable).</li>
-            <li>Technical highlights: trajectory planning, camera pipelines, etc.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- COMMUNITY SERVICE -->
-    <section id="community">
-      <h2>Community Service</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Initiatives</h3>
-          <ul class="list">
-            <li>Weekly meal-bag program — scope & impact.</li>
-            <li>Workshops on finance/STEM for youth — dates & materials.</li>
-            <li>Partnerships with local shelters / orgs.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Impact</h3>
-          <p>Short metrics: total hours, bags delivered, funds raised, partners served. Add testimonials if available.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- BUSINESS PROPOSAL -->
-    <section id="business">
-      <h2>Business Proposal</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Problem</h3>
-          <p>State the pain point you’re tackling. Who is affected and how big is the need?</p>
-        </article>
-        <article class="card">
-          <h3>Solution</h3>
-          <p>Your product/service in one paragraph. Include the tech, why it’s different, and the core benefit.</p>
-        </article>
-        <article class="card">
-          <h3>Go-To-Market</h3>
-          <ul class="list">
-            <li>Customer segment(s)</li>
-            <li>Acquisition channel(s)</li>
-            <li>Pricing model</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Traction & Next Steps</h3>
-          <ul class="list">
-            <li>Pilots / LOIs / early users</li>
-            <li>Roadmap (Q3–Q4)</li>
-            <li>Contact for partnerships</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
+    <!-- Contact / Resume -->
     <section id="contact">
       <h2>Contact</h2>
-      <div class="grid">
-        <article class="card">
+      <p class="lead">Open to collaboration, research, and mentoring opportunities.</p>
+      <div class="grid two">
+        <div class="card">
           <h3>Reach me</h3>
-          <p>Email: <a href="alexgan2026@gmail.com">alexgan2026@gmail.com</a> • GitHub: <a href="#">@yourhandle</a> • LinkedIn: <a href="#">/in/yourname</a></p>
-        </article>
-        <article class="card">
+          <p>Email: <a href="mailto:alexgan2026@gmail.com">alexgan2026@gmail.com</a>
+            · GitHub: <a href="https://github.com/nutellajello">@nutellajello</a>
+            · LinkedIn: <a href="#">/in/alex-gan</a></p>
+        </div>
+        <div id="resume" class="card">
           <h3>Resume</h3>
-          <p><a class="btn" href="#">Download PDF</a></p>
-        </article>
+          <p>Add a <span class="mono">/assets/Alex_Gan_Resume.pdf</span> and link it here:</p>
+          <p><a class="btn" href="assets/Alex_Gan_Resume.pdf">Download PDF</a></p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">© <span id="y"></span> Your Name. Built with HTML/CSS + GitHub Pages.</div>
+    <div class="wrap">
+      <div class="grid two">
+        <div>© <span id="y"></span> Alex Gan. Built with clean HTML/CSS on GitHub Pages.</div>
+        <div class="right">
+          <span class="pill">Last updated <span id="lastUpdated"></span></span>
+        </div>
+      </div>
+    </div>
   </footer>
 
-  <button id="topBtn" class="btn" aria-label="Back to top">↑ Top</button>
-
   <script>
-    // Active link highlight on scroll
-    const links = document.querySelectorAll('.link');
-    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const i = sections.indexOf(entry.target);
-        if(i > -1){
-          links[i].classList.toggle('active', entry.isIntersecting);
-        }
-      });
-    },{rootMargin:"-60% 0px -35% 0px", threshold: [0, 1]});
-    sections.forEach(s => s && obs.observe(s));
-
-    // Back to top button
-    const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', ()=>{
-      topBtn.style.display = window.scrollY > 500 ? 'inline-flex' : 'none';
-    });
-    topBtn.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
-
-    // Year
+    // small helpers
     document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString(undefined, {year:'numeric', month:'short'});
+
+    // smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
   </script>
 </body>
 </html>
+
 
 
